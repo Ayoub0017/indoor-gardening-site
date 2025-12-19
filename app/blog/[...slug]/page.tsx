@@ -36,6 +36,8 @@ export async function generateMetadata({ params }: Props) {
     };
 }
 
+export const revalidate = 0; // Always fetch fresh content
+
 export default async function BlogPostPage({ params }: Props) {
     const slugArray = await params.slug;
     const postSlug = slugArray[slugArray.length - 1]; // Get the last segment

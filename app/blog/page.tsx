@@ -10,6 +10,8 @@ const formatDate = (dateString: string) => {
     });
 };
 
+export const revalidate = 0; // Always fetch fresh content
+
 export default async function BlogIndexPage() {
     const posts = await getBlogPosts(100); // Fetch latest 100 posts for the index
 
