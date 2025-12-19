@@ -43,8 +43,8 @@ export interface BlogPost {
         slug: string;
         excerpt: string;
         featuredImage?: ContentfulImage;
-        content: Document;
-        markdownContent?: string; // New field for Markdown support
+        // content field removed
+        markdownContent: string; // Made required as main content source
         author: Author;
         categories?: Category[];
         parentPost?: BlogPost; // Recursive reference for parent/child structure

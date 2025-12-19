@@ -99,26 +99,9 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* Content */}
             <div className="prose prose-lg mx-auto prose-green prose-headings:font-bold prose-img:rounded-xl">
-                {post.fields.markdownContent ? (
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                        {post.fields.markdownContent}
-                    </ReactMarkdown>
-                ) : (
-                    documentToReactComponents(post.fields.content, {
-                        renderNode: {
-                            [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                                const { url, details } = node.data.target.fields.file;
-                                return (
-                                    <img
-                                        src={url}
-                                        alt="Embedded Image"
-                                        className="w-full rounded-lg my-8"
-                                    />
-                                );
-                            }
-                        }
-                    })
-                )}
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {post.fields.markdownContent}
+                </ReactMarkdown>
             </div>
 
             {/* Author Bio */}
