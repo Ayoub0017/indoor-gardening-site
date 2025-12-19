@@ -44,6 +44,7 @@ export interface BlogPost {
         excerpt: string;
         featuredImage?: ContentfulImage;
         content: Document;
+        markdownContent?: string; // New field for Markdown support
         author: Author;
         categories?: Category[];
         parentPost?: BlogPost; // Recursive reference for parent/child structure

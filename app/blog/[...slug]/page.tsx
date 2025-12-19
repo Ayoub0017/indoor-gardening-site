@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 // Helper to format date
 const formatDate = (dateString: string) => {
@@ -97,20 +99,26 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* Content */}
             <div className="prose prose-lg mx-auto prose-green prose-headings:font-bold prose-img:rounded-xl">
-                {documentToReactComponents(post.fields.content, {
-                    renderNode: {
-                        [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                            const { url, details } = node.data.target.fields.file;
-                            return (
-                                <img
-                                    src={url}
-                                    alt="Embedded Image"
-                                    className="w-full rounded-lg my-8"
-                                />
-                            );
+                {post.fields.markdownContent ? (
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {post.fields.markdownContent}
+                    </ReactMarkdown>
+                ) : (
+                    documentToReactComponents(post.fields.content, {
+                        renderNode: {
+                            [BLOCKS.EMBEDDED_ASSET]: (node) => {
+                                const { url, details } = node.data.target.fields.file;
+                                return (
+                                    <img
+                                        src={url}
+                                        alt="Embedded Image"
+                                        className="w-full rounded-lg my-8"
+                                    />
+                                );
+                            }
                         }
-                    }
-                })}
+                    })
+                )}
             </div>
 
             {/* Author Bio */}
