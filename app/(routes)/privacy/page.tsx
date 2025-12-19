@@ -1,6 +1,17 @@
 export const metadata = {
     title: 'Privacy Policy - Indoor Gardens',
     description: 'Our commitment to protecting your privacy.',
+    alternates: {
+        canonical: '/privacy',
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+        },
+    },
 };
 
 export default function PrivacyPage() {

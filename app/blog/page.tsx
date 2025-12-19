@@ -12,6 +12,25 @@ const formatDate = (dateString: string) => {
 
 export const revalidate = 0; // Always fetch fresh content
 
+export async function generateMetadata() {
+    return {
+        title: 'Blog - Indoor Gardens',
+        description: 'Expert tips, guides, and inspiration for your indoor garden. Learn how to grow healthy plants indoors.',
+        alternates: {
+            canonical: '/blog',
+        },
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+            },
+        },
+    };
+}
+
+
 export default async function BlogIndexPage() {
     const posts = await getBlogPosts(100); // Fetch latest 100 posts for the index
 

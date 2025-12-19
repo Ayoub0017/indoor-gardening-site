@@ -37,9 +37,45 @@ export async function generateMetadata({ params }: Props) {
         };
     }
 
+    // Construct the full slug path for canonical URL
+    const fullSlug = post.fields.parentPost
+        ? `${post.fields.parentPost.fields.slug}/${post.fields.slug}`
+        : post.fields.slug;
+
     return {
         title: `${post.fields.title} | Indoor Gardens`,
         description: post.fields.excerpt,
+        alternates: {
+            canonical: `/blog/${fullSlug}`,
+        },
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+            },
+        },
+        openGraph: {
+            title: post.fields.title,
+            description: post.fields.excerpt,
+            type: 'article',
+            url: `/blog/${fullSlug}`,
+            images: post.fields.featuredImage ? [
+                {
+                    url: post.fields.featuredImage.fields.file.url,
+                    alt: post.fields.featuredImage.fields.title,
+                }
+            ] : [],
+            publishedTime: post.fields.publishedDate,
+            authors: [post.fields.author?.fields.name],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.fields.title,
+            description: post.fields.excerpt,
+            images: post.fields.featuredImage ? [post.fields.featuredImage.fields.file.url] : [],
+        },
     };
 }
 

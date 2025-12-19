@@ -1,4 +1,22 @@
 import Image from 'next/image';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'About Us - Indoor Gardens',
+    description: 'Learn about our mission to make indoor gardening accessible and successful for everyone. Meet the team behind Indoor Gardens.',
+    alternates: {
+        canonical: '/about',
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+        },
+    },
+};
+
 
 export default function AboutPage() {
     return (

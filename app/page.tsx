@@ -6,6 +6,23 @@ import { Leaf, Droplets, Sun, Heart } from 'lucide-react';
 
 export const revalidate = 0; // Always fetch fresh content
 
+export async function generateMetadata() {
+  return {
+    alternates: {
+      canonical: '/',
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+  };
+}
+
+
 export default async function Home() {
   const posts = await getBlogPosts(3);
 

@@ -5,6 +5,17 @@ import ContactForm from '@/components/ContactForm';
 export const metadata = {
     title: 'Contact Us - Indoor Gardens',
     description: 'Get in touch with us for plant care advice or partnership inquiries.',
+    alternates: {
+        canonical: '/contact',
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+        },
+    },
 };
 
 export default function ContactPage() {

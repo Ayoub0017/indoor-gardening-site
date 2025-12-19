@@ -8,8 +8,17 @@ import { cn } from '@/lib/utils'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://justindoorgardens.com'),
   title: 'Indoor Gardens - Your Guide to Indoor Gardening',
   description: 'Discover the joy of indoor gardening with expert tips, plant care guides, and inspiration for your green space.',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 }
 
 export default function RootLayout({
