@@ -14,14 +14,14 @@ const formatDate = (dateString: string) => {
 };
 
 type Props = {
-    params: {
+    params: Promise<{
         slug: string[];
-    };
+    }>;
 };
 
 export async function generateMetadata({ params }: Props) {
-    const slugArray = await params.slug;
-    const postSlug = slugArray[slugArray.length - 1]; // Last segment is the post slug
+    const { slug } = await params;
+    const postSlug = slug[slug.length - 1]; // Last segment is the post slug
     const post = await getBlogPostBySlug(postSlug);
 
     if (!post) {
@@ -39,8 +39,8 @@ export async function generateMetadata({ params }: Props) {
 export const revalidate = 0; // Always fetch fresh content
 
 export default async function BlogPostPage({ params }: Props) {
-    const slugArray = await params.slug;
-    const postSlug = slugArray[slugArray.length - 1]; // Get the last segment
+    const { slug } = await params;
+    const postSlug = slug[slug.length - 1]; // Get the last segment
     const post = await getBlogPostBySlug(postSlug);
 
     if (!post) {
