@@ -51,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return {
             url: `${baseUrl}/blog/${slug}`,
             lastModified: new Date(post.sys.updatedAt),
-            changeFrequency: 'weekly' as const,
+            changeFrequency: 'daily' as const,
             priority: 0.8,
         };
     });
