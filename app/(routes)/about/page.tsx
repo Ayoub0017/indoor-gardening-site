@@ -92,9 +92,9 @@ export default function AboutPage() {
                     <h2 className="text-3xl font-bold text-gray-900 text-center mb-16">Meet the Team</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
                         {[
-                            { name: "Alex Chen", role: "Founder & Lead Grower", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop" },
-                            { name: "Sarah Miller", role: "Plant Doctor", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop" },
-                            { name: "David Kim", role: "Community Manager", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop" },
+                            { name: "Alex Chen", role: "Founder & Lead Grower", img: "/images/alex.png" },
+                            { name: "Sarah Miller", role: "Plant Doctor", img: "/images/sarah.png" },
+                            { name: "David Kim", role: "Community Manager", img: "/images/david.png" },
                         ].map((member, i) => (
                             <div key={i} className="group text-center">
                                 <div className="relative mb-6 rounded-2xl overflow-hidden aspect-square mx-auto max-w-sm shadow-md group-hover:shadow-xl transition-all">
